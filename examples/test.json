@@ -1,0 +1,122 @@
+{
+    "type": "struct",
+    "dataID": null,
+    "wiretype": 5,
+    "value": {
+        "boolean_element": {
+            "type":    "boolean",
+            "dataID": 0,
+            "value": true,
+            "wiretype": 0,
+            "length": 1
+        },
+        "string_element_static": {
+            "type":    "string",
+            "dataID": 0,
+            "value":    "abc",
+            "wiretype": 7
+        },
+        "array_element_dynamic4": {
+            "type":    "array",
+            "dataID": 0,
+            "value": [1, 2, 3],
+            "wiretype": 7,
+            "length": 23,
+            "elementtype":    "uint8"
+        },
+        "array_element_dynamic4": {
+            "type":    "array",
+            "dataID": 0,
+            "value": [
+                {
+                    "name": "some array element",
+                    "type":    "array",
+                    "dataID": 3,
+                    "value": [1, 2, 3],
+                    "wiretype": 5,
+                    "elementtype":    "uint8"
+                },
+                {
+                    "type":    "array",
+                    "dataID": 2,
+                    "value": [4, 5, 6],
+                    "wiretype": 5,
+                    "elementtype":    "uint8"
+                },
+                {
+                    "type":    "array",
+                    "dataID": 1,
+                    "value": [
+                        {
+                            "type":    "uint8",
+                            "dataID": 0,
+                            "value": 9
+                        },
+                        {
+                            "type":    "uint8",
+                            "dataID": 1,
+                            "value": 8
+                        },
+                        {
+                            "type":    "uint8",
+                            "dataID": 4,
+                            "value": 7
+                        }
+                    ],
+                    "wiretype": 5,
+                    "elementtype":    "uint8"
+                }
+            ],
+            "wiretype": 7,
+            "length": 10,
+            "elementtype":    "array"
+        },
+        "struct_element_dynamic2": {
+            "type":    "struct",
+            "dataID": 0,
+            "value": {
+                "struct_element_dynamic2_inner1_struct": {
+                    "type":    "struct",
+                    "dataID": 3,
+                    "wiretype": 7,
+                    "value": {
+                    }
+                },
+                "struct_element_dynamic2_inner2_boolean": {
+                    "type":    "boolean",
+                    "dataID": 0,
+                    "value": false
+                },
+                "struct_element_dynamic2_inner3_array": {
+                    "type":    "array",
+                    "dataID": 2,
+                    "value": [1, 2, 3],
+                    "wiretype": 7,
+                    "elementtype":    "uint8"
+                },
+                "serialized": {
+                    "type": "serialized",
+                    "value": "01 02 03"
+                }
+            },
+            "wiretype": 6,
+            "length": 3
+        },
+        "serialized": {
+            "type": "serialized",
+            "name": "SERIAL",
+            "value": "01 02 03 04 05 06 07 08 09 0a 11 12 13 14 15 16 17 18 19 1a"
+        },
+        "boolean_element2": {
+            "name": "foobar",
+            "type":    "boolean",
+            "dataID": 0,
+            "value": 1
+        },
+        "float32": {
+            "type": "float32",
+            "dataID": 0,
+            "value": 1.5
+        }
+    }
+}

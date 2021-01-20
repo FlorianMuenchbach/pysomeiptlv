@@ -1,0 +1,48 @@
+{
+    "string": {
+        "type": "string",
+        "dataID": 0,
+        "value": "Hello, World!",
+        "wiretype": 4,
+        "lengthfield_len": 2
+    },
+    "string_with_padding": {
+        "type": "string",
+        "dataID": 0,
+        "value": "Hello, World!",
+        "wiretype": 4,
+        "lengthfield_len": 2,
+        "length" : 30,
+        "padding": true
+    },
+    "string_without_termination": {
+        "type": "string",
+        "dataID": 0,
+        "value": "Hello, World!",
+        "wiretype": 4,
+        "lengthfield_len": 2,
+        "terminate": false
+    },
+    "string_no_bom": {
+        "type": "string",
+        "dataID": 0,
+        "value": "Hello, World!",
+        "wiretype": 4,
+        "bom": false,
+        "lengthfield_len": 2
+    },
+    "string_special_chars": {
+        "type": "string",
+        "dataID": 0,
+        "value": "€ℕℝ∂∀",
+        "wiretype": 4,
+        "lengthfield_len": 2
+    },
+    "string_static": {
+        "type": "string",
+        "dataID": 0,
+        "value": "Hello, World!",
+        "wiretype": 4,
+        "lengthfield_len": 0
+    }
+}

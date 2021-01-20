@@ -1,0 +1,200 @@
+//{
+//    "boolean_element":          { "type": "boolean", "dataID": 0, "value": 0, "wiretype": 0, "length": 1 },
+//    "uint8_element":            { "type": "uint8",   "dataID": 0, "value": 0, "wiretype": 0, "length": 1 },
+//    "sint8_element":            { "type": "sint8",   "dataID": 0, "value": 0, "wiretype": 0, "length": 1 },
+//    "uint16_element":           { "type": "uint16",  "dataID": 0, "value": 0, "wiretype": 1, "length": 2 },
+//    "sint16_element":           { "type": "sint16",  "dataID": 0, "value": 0, "wiretype": 1, "length": 2 },
+//    "uint32_element":           { "type": "uint32",  "dataID": 0, "value": 0, "wiretype": 2, "length": 4 },
+//    "sint32_element":           { "type": "sint32",  "dataID": 0, "value": 0, "wiretype": 2, "length": 4 },
+//    "float32_element":          { "type": "float32", "dataID": 0, "value": 0, "wiretype": 2, "length": 4 },
+//    "uint64_element":           { "type": "uint64",  "dataID": 0, "value": 0, "wiretype": 3, "length": 8 },
+//    "sint64_element":           { "type": "sint64",  "dataID": 0, "value": 0, "wiretype": 3, "length": 8 },
+//    "float64_element":          { "type": "float64", "dataID": 0, "value": 0, "wiretype": 3, "length": 8 },
+//    "string_element_static":    { "type": "string",  "dataID": 0, "value": "abc",   "wiretype": 4, "length": "len(value)" },
+//    "array_element_static":     { "type": "array",   "dataID": 0, "value": [1,2,3], "wiretype": 4, "length": "len(value) * len(elementtype)", "elementtype": "uint8" },
+//    "struct_element_static":    { "type": "struct",  "dataID": 0, "value": {},      "wiretype": 4, "length": "len(value)" },
+//    "string_element_dynamic1":  { "type": "string",  "dataID": 0, "value": "abc",   "wiretype": 5, "length": "len(value)" },
+//     "array_element_dynamic1":  { "type": "array",   "dataID": 0, "value": [1,2,3], "wiretype": 5, "length": "len(value) * len(elementtype)", "elementtype": "uint8" },
+//    "struct_element_dynamic1":  { "type": "struct",  "dataID": 0, "value": {},      "wiretype": 5, "length": "len(value)" },
+//    "string_element_dynamic2":  { "type": "string",  "dataID": 0, "value": "abc",   "wiretype": 6, "length": "len(value)" },
+//     "array_element_dynamic2":  { "type": "array",   "dataID": 0, "value": [1,2,3], "wiretype": 6, "length": "len(value) * len(elementtype)", "elementtype": "uint8" },
+//    "struct_element_dynamic2":  { "type": "struct",  "dataID": 0, "value": {},      "wiretype": 6, "length": "len(value)" },
+//    "string_element_dynamic4":  { "type": "string",  "dataID": 0, "value": "abc",   "wiretype": 7, "length": "len(value)" },
+//     "array_element_dynamic4":  { "type": "array",   "dataID": 0, "value": [1,2,3], "wiretype": 7, "length": "len(value) * len(elementtype)", "elementtype": "uint8" },
+//    "struct_element_dynamic4":  { "type": "struct",  "dataID": 0, "value": {},      "wiretype": 7, "length": "len(value)" }
+//}
+//
+{
+    "boolean_element": {
+        "type":    "boolean",
+        "dataID": 0,
+        "value": true,
+        "wiretype": 0,              // optional, overrides determined wiretype
+        "length": 1                 // optional, overrides determined length
+    },
+    "uint8_element": {
+        "type":    "uint8",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 0,              // optional, overrides determined wiretype
+        "length": 1                 // optional, overrides determined length
+    },
+    "sint8_element": {
+        "type":    "sint8",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 0,              // optional, overrides determined wiretype
+        "length": 1                 // optional, overrides determined length
+    },
+    "uint16_element": {
+        "type":    "uint16",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 1,              // optional, overrides determined wiretype
+        "length": 2                 // optional, overrides determined length
+    },
+    "sint16_element": {
+        "type":    "sint16",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 1,              // optional, overrides determined wiretype
+        "length": 2                 // optional, overrides determined length
+    },
+    "uint32_element": {
+        "type":    "uint32",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 2,              // optional, overrides determined wiretype
+        "length": 4                 // optional, overrides determined length
+    },
+    "sint32_element": {
+        "type":    "sint32",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 2,              // optional, overrides determined wiretype
+        "length": 4                 // optional, overrides determined length
+    },
+    "float32_element": {
+        "type":    "float32",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 2,              // optional, overrides determined wiretype
+        "length": 4                 // optional, overrides determined length
+    },
+    "uint64_element": {
+        "type":    "uint64",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 3,              // optional, overrides determined wiretype
+        "length": 8                 // optional, overrides determined length
+    },
+    "sint64_element": {
+        "type":    "sint64",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 3,              // optional, overrides determined wiretype
+        "length": 8                 // optional, overrides determined length
+    },
+    "float64_element": {
+        "type":    "float64",
+        "dataID": 0,
+        "value": 0,
+        "wiretype": 3,              // optional, overrides determined wiretype
+        "length": 8                 // optional, overrides determined length
+    },
+    "string_element_static": {
+        "type":    "string",
+        "dataID": 0,
+        "value":    "abc",
+        "wiretype": 4,              // mandatory for static length value!
+        "length":    "len(value)",  // optional, overrides determined length
+        "lengthfield_len": 1,       // mandatory for static lengthfield value
+        "terminate": true,          // optional, 'true' is default. Enables / disables the terminating \0 char
+        "bom": true,                // optional, 'true' is default, Enables / disables the BOM insertion
+        "padding": false            // optional, 'false' is default. Enables padding up to length with \0 chars
+    },
+    "array_element_static": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [1, 2, 3],
+        "wiretype": 4,              // mandatory for static length value!
+        "length":    "len(value) * len(elementtype)",   // optional, overrides determined length
+        "elementtype":    "uint8",  // mandatory for array types
+        "lengthfield_len": 1        // mandatory for static lengthfield value
+    },
+    "struct_element_static": {
+        "type":    "struct",
+        "dataID": 0,
+        "value": {},
+        "wiretype": 4,              // mandatory for static length value!
+        "length":    "len(value)",  // optional, overrides determined length
+        "lengthfield_len": 1        // mandatory for static lengthfield value
+    },
+    "string_element_dynamic1": {
+        "type":    "string",
+        "dataID": 0,
+        "value":    "abc",
+        "wiretype": 5,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    },
+    "array_element_dynamic1": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [1, 2, 3],
+        "wiretype": 5,              // optional, overrides determined wiretype
+        "length":    "len(value) * len(elementtype)",   // optional, overrides determined length
+        "elementtype":    "uint8"   // mandatory for array types
+    },
+    "struct_element_dynamic1": {
+        "type":    "struct",
+        "dataID": 0,
+        "value": {},
+        "wiretype": 5,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    },
+    "string_element_dynamic2": {
+        "type":    "string",
+        "dataID": 0,
+        "value":    "abc",
+        "wiretype": 6,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    },
+    "array_element_dynamic2": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [1, 2, 3],
+        "wiretype": 6,              // optional, overrides determined wiretype
+        "length":    "len(value) * len(elementtype)",   // optional, overrides determined length
+        "elementtype":    "uint8"   // mandatory for array types
+    },
+    "struct_element_dynamic2": {
+        "type":    "struct",
+        "dataID": 0,
+        "value": {},
+        "wiretype": 6,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    },
+    "string_element_dynamic4": {
+        "type":    "string",
+        "dataID": 0,
+        "value":    "abc",
+        "wiretype": 7,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    },
+    "array_element_dynamic4": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [1, 2, 3],
+        "wiretype": 7,              // optional, overrides determined wiretype
+        "length":    "len(value) * len(elementtype)",   // optional, overrides determined length
+        "elementtype":    "uint8"   // mandatory for array types
+    },
+    "struct_element_dynamic4": {
+        "type":    "struct",
+        "dataID": 0,
+        "value": {},
+        "wiretype": 7,              // optional, overrides determined wiretype
+        "length":    "len(value)"   // optional, overrides determined length
+    }
+}
+

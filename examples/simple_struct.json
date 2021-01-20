@@ -1,0 +1,20 @@
+{
+    "type": "struct",
+    "dataID": null,
+    "wiretype": 5,
+    "value": {
+        "boolean_element": {
+            "type": "boolean",
+            "dataID": 0,
+            "value": true
+        },
+        "array_element": {
+            "type": "array",
+            "dataID": 0,
+            "value": [1, 2, 3],
+            "wiretype": 7,
+            "length": 23,
+            "elementtype": "uint8"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "array_static_uint8": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [1, 2, 3],
+        "wiretype": 4,
+        "lengthfield_len": 4,
+        "elementtype":    "uint8"
+    },
+    "array_static_array": {
+        "type":    "array",
+        "dataID": 0,
+        "value": [
+            {
+                "type":    "array",
+                "dataID": 0,
+                "value": [1, 2, 3],
+                "wiretype": 4,
+                "lengthfield_len": 4,
+                "elementtype":    "uint8"
+            },
+            {
+                "type":    "array",
+                "dataID": 1,
+                "value": [1, 2, 3],
+                "wiretype": 4,
+                "lengthfield_len": 4,
+                "elementtype":    "uint8"
+            }
+        ],
+        "wiretype": 4,
+        "lengthfield_len": 4,
+        "elementtype": "array"
+    }
+}
