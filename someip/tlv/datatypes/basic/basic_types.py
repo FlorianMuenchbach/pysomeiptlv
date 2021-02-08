@@ -7,7 +7,6 @@ import operator
 from abc import abstractmethod
 import struct
 
-from someip.tlv.datatypes._import_helper import cached_property
 from someip.tlv.datatypes.consts import Types
 from someip.tlv.datatypes.type_helpers import generate_tag, format_bytearray_description_table
 from someip.tlv.datatypes._someip_data_type import _SomeIPDataType

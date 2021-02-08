@@ -5,7 +5,6 @@
 
 import operator
 
-from ._import_helper import cached_property
 from .consts import Types
 from .serializable import Serializable
 from .type_helpers import format_bytearray_description_table, format_bytearray_to_stringsblock
@@ -32,18 +31,20 @@ class Preserialized(Serializable):
     type = property(operator.attrgetter("_type"))
     name = property(operator.attrgetter("_name"))
 
-    @cached_property
+    @property
     def length(self) -> int:
         """
         Length of the serialized element data.
+
+        There's no setter for the Preserialized data type.
         """
         return len(self._data)
 
-    @cached_property
+    @property
     def serialized_value(self) -> bytearray:
         return self._data
 
-    @cached_property
+    @property
     def serialization(self) -> bytearray:
         """
         Since no tag and no length field will be added, this returns the same
@@ -51,7 +52,7 @@ class Preserialized(Serializable):
         """
         return self.serialized_value
 
-    @cached_property
+    @property
     def serialization_length(self) -> int:
         """
         Since no tag and no length field will be added, this returns the same
@@ -59,7 +60,7 @@ class Preserialized(Serializable):
         """
         return self.length
 
-    @cached_property
+    @property
     def lengthfield(self) -> bytearray:
         """
         Since there is no length field, this returns always an empty bytearray.
@@ -69,7 +70,7 @@ class Preserialized(Serializable):
     _INDENT_INCREMENT=4
     _BYTES_PER_ROW=4
 
-    @cached_property
+    @property
     def _formatted_title(self):
         return f'{self.name}({self.type.name})' if self.name is not None \
                 else self.type.name
