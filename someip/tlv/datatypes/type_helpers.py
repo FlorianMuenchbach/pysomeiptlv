@@ -69,6 +69,16 @@ def generate_tag(wiretype, data_id):
     """
     Generates a serialized tag based on given wire type and data ID.
     """
+    if data_id is not None and \
+            (data_id < 0 or data_id > 0xFFF or not isinstance(data_id, int)):
+        raise ValueError(
+                'Data ID must be an integer value in range [0, 0xFFF], ' \
+                f'is {type(data_id)} 0x{data_id:x}.')
+    if wiretype < 0 or wiretype > 0xF or not isinstance(wiretype, int):
+        raise ValueError(
+                'Wiretype must be an integer value in range [0, 0xF], ' \
+                f'is {type(wiretype)} 0x{wiretype:x}.')
+
     return bytearray([
             ((0xF & wiretype) << 4) | ((0xF00 & data_id) >> 8),
             (0xFF & data_id)
