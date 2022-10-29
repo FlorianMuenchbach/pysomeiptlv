@@ -102,7 +102,6 @@ def test_value_range(someiptype, length, fmt, value_exception):
     value, exception = value_exception
     data_id = 0
 
-    print(someiptype, value, exception)
     with OptionalExceptionTester(exception):
         instance = someiptype(value, data_id)
         # the following lines are only executed, if the previous did not raise an error!
