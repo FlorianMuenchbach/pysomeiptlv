@@ -8,6 +8,7 @@ from .helpers import \
         OptionalExceptionTester, \
         cartesianproduct, \
         random_sample, \
+        check_tag, \
         create_testset_simple_range
 from someip.tlv.datatypes.basic import *
 
@@ -19,18 +20,15 @@ testdata_and_ok_values = (
         #type       value   dataID  val_len     wiretype    fmt    min     max (excl)
         (Boolean,   True,   0,      1,          0,          '!?',    0,    2),
         (Uint8,     7,      0,      1,          0,          '!B',    0,    256),
-        (Uint16,    7,      0,      2,          0,          '!H',    0,    2**16),
-        (Uint32,    7,      0,      4,          0,          '!I',    0,    2**32),
-#TODO        (Uint64,    7,      0,      8,          0,          '!Q',    0,    2**64),
-# -> Results in overflow...
+        (Uint16,    7,      0,      2,          1,          '!H',    0,    2**16),
+        (Uint32,    7,      0,      4,          2,          '!I',    0,    2**32),
+        (Uint64,    7,      0,      8,          3,          '!Q',    0,    2**64),
         (Sint8,     -42,    0,      1,          0,          '!b', -128,    128),
-        (Sint16,    7,      0,      2,          0,          '!h', -int(2**15),    int(2**15)),
-        (Sint32,    7,      0,      4,          0,          '!i', -int(2**31),    int(2**31)),
-#TODO    (Sint64,    7,      0,      8,          0,          '!q', -int(2**63),    int(2**63)),
-# -> Results in overflow...
+        (Sint16,    7,      0,      2,          1,          '!h', -int(2**15),    int(2**15)),
+        (Sint32,    7,      0,      4,          2,          '!i', -int(2**31),    int(2**31)),
+        (Sint64,    7,      0,      8,          3,          '!q', -int(2**63),    int(2**63)),
         )
 
-#TODO random sample breaks with 64 bit values.
 #TODO test floats
 #        (Float32,    7,      0,      4,          0,          '!f', ..., ...)
 #        (Float64,    7,      0,      8,          0,          '!d', ..., ...)
@@ -114,15 +112,6 @@ def test_value_range(someiptype, length, fmt, value_exception):
 
 
 
-def check_tag(serialized, wiretype, data_id, offset=0):
-    assert len(serialized) >= 2
-    assert ((serialized[offset] & 0xF0) >> 4) == wiretype
-    assert struct.unpack(
-            '!H',
-            bytearray([serialized[offset] & 0x0F, serialized[offset + 1]])
-            )[0] == data_id
-
-
 @pytest.mark.parametrize(
         "instance_type,value,_unused,expected_value_length, expected_wiretype,fmt, _min, _max",
         testdata_and_ok_values
@@ -148,7 +137,6 @@ def test_serialization_basic_type(
     assert instance.length == expected_value_length
     assert instance.serialization_length == expected_serialized_length
 
-    serialized_value = serialized[2:]
     assert struct.unpack_from(fmt, serialized, offset=2)[0] == value
 
     check_tag(serialized, expected_wiretype, random_data_id)
