@@ -85,7 +85,7 @@ class _ArrayType(_ComplexDataType):
             for element in self._items:
                 serialized.extend(element.serialization)
         else:
-            raise NotImplementedError("Can't loadd an element of this kind.")
+            raise NotImplementedError("Can't load an element of this kind.")
         return serialized
 
 
