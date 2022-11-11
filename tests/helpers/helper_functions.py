@@ -1,6 +1,7 @@
 import itertools
 import random
 import types
+import struct
 
 def cartesianproduct(*args):
     _convert = lambda v: \
@@ -22,7 +23,16 @@ def random_sample(start, end, num):
     """
     end is exclusive!
     """
-    return tuple(random.sample(range(start, end), num))
+    end -= 1
+
+    sample = ()
+    start, end = (start, end) if end >= start else (end, start)
+    num = 0 if end == start else num
+
+    for i in range(0, num):
+        sample += (random.randint(start, end),)
+
+    return sample
 
 def create_testset_simple_range(start, end, sample_good=0, sample_bad=0, extra=()):
     """
@@ -46,5 +56,15 @@ def create_testset_simple_range(start, end, sample_good=0, sample_bad=0, extra=(
             cartesianproduct(random_sample(end, end * 2, sample_bad), ValueError),
             extra
             )
+
+
+def check_tag(serialized, wiretype, data_id, offset=0):
+    assert len(serialized) >= 2
+    assert ((serialized[offset] & 0xF0) >> 4) == wiretype
+
+    assert struct.unpack(
+            '!H',
+            bytearray([serialized[offset] & 0x0F, serialized[offset + 1]])
+            )[0] == data_id
 
 

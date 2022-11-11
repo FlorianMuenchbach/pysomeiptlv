@@ -7,10 +7,12 @@ from .helpers import \
         OptionalExceptionTester, \
         cartesianproduct, \
         random_sample, \
+        check_tag, \
         create_testset_simple_range
 
 from someip.tlv.datatypes.basic import Uint8, Sint8
-from someip.tlv.datatypes.complex import Array
+from someip.tlv.datatypes.complex import Array, String
+from someip.tlv.datatypes.type_helpers import get_lengthfield_width_by_wiretype
 
 
 
@@ -41,11 +43,28 @@ def test_array_creation_wiretype_lengthfield(wiretype, lengthfield, exception):
 
 
 
-def test_static_array_serialization():
-    data_id = 0
-    wiretype = 5
+@pytest.mark.parametrize("values,array_type",[
+                             ([Uint8(1, i) for i in range(0,3)], Array),
+                             ("foobar", String),
+                             ("", String),
+                             ("a" * 0xFFF, String),
+                             ("a" * (0xFFF+1), String)
+                             ])
+def test_static_array_serialization(values, array_type):
+    data_id = 2
+    wiretype = 6
 
-    array = Array([ Uint8(1, i) for i in range(0,3) ], data_id, wiretype)
-    print(array.length)
-    print(array.serialization)
-#    assert False
+    array = array_type(values, data_id, wiretype)
+
+    expected_serialized_length = 2 + get_lengthfield_width_by_wiretype(wiretype)
+    if array_type == String:
+        expected_serialized_length += len(values)
+        expected_serialized_length += 1 # terminating char, enabled by default
+        expected_serialized_length += 3 # bom, enabled by default
+    else:
+        expected_serialized_length += len(values)
+
+    serialized = array.serialization
+
+    check_tag(serialized, wiretype, data_id)
+    assert len(serialized) == expected_serialized_length

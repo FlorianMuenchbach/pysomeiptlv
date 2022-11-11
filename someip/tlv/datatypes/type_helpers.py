@@ -33,7 +33,7 @@ def get_lengthfield_width_by_wiretype(wiretype):
     if wiretype is None:
         raise ValueError('Wiretype needed, can not convert NoneType.')
 
-    if wiretype < 4:
+    if 0 <= wiretype < 4:
         return 0
     elif wiretype == 5:
         return 1
@@ -69,6 +69,16 @@ def generate_tag(wiretype, data_id):
     """
     Generates a serialized tag based on given wire type and data ID.
     """
+    if data_id is not None and \
+            (data_id < 0 or data_id > 0xFFF or not isinstance(data_id, int)):
+        raise ValueError(
+                'Data ID must be an integer value in range [0, 0xFFF], ' \
+                f'is {type(data_id)} 0x{data_id:x}.')
+    if wiretype < 0 or wiretype > 0xF or not isinstance(wiretype, int):
+        raise ValueError(
+                'Wiretype must be an integer value in range [0, 0xF], ' \
+                f'is {type(wiretype)} 0x{wiretype:x}.')
+
     return bytearray([
             ((0xF & wiretype) << 4) | ((0xF00 & data_id) >> 8),
             (0xFF & data_id)
@@ -136,12 +146,15 @@ def is_arrayish(list_of_elements, expected_type=None) -> bool:
     """
     ret_val = False
 
-    if isinstance(list_of_elements, (list, tuple)):
+    if isinstance(list_of_elements, (list, tuple, str)):
         ret_val = True
 
         if len(list_of_elements) > 0:
-            _expected_type = type(list_of_elements[0]) if expected_type is None else expected_type
-            for element in list_of_elements[1:]:
+            _expected_type = type(list_of_elements[0]) if expected_type is None \
+                    else expected_type
+            # otherwise, a list of 1 elements breaks the code (iterate over
+            # empty list, even if first is mismatch
+            for element in list_of_elements:
                 if not isinstance(element, _expected_type):
                     ret_val = False
                     break

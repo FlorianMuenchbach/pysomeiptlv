@@ -85,7 +85,7 @@ class _ArrayType(_ComplexDataType):
             for element in self._items:
                 serialized.extend(element.serialization)
         else:
-            raise NotImplementedError("Can't loadd an element of this kind.")
+            raise NotImplementedError("Can't load an element of this kind.")
         return serialized
 
 
@@ -192,9 +192,7 @@ class String(_ArrayType):
         if self.padding and self.length is not None and len(ustring) < self.length:
             ustring.extend([0] * (self.length - len(ustring)))
 
-        # We simply use the position in the string as data ID, will not be
-        # serialized anyway.
-        self._set_items([Uint8(c, i) for i, c in enumerate(ustring)])
+        self._set_items([Uint8(c, None) for c in ustring])
 
     def __convert_to_string(self, to_convert):
         # easier to have one common way...
